@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchShipments } from "../services/shipmentService";
 import type { Shipment } from "../types/shipment";
-import StatusBadge from "../components/StatusBadge";
-
+import ShipmentCard from "../components/ShipmentCard";
+ 
 const ShipmentDashboard = () => {
   const [shipments, setShipments] = useState<Shipment[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -40,26 +40,14 @@ const ShipmentDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-2xl font-bold mb-6">Shipment Dashboard</h1>
-
+    <div >
+      <h1 className="text-3xl font-semibold mb-6 pt-4 text-center tracking-tight">Shipment Dashboard  </h1>
       <ul className="space-y-4">
-        {shipments.map((shipment) => (
-          <li
-            key={shipment.id}
-            className="bg-white p-4 rounded shadow-sm"
-          >
-            <p className="font-semibold">
-              Tracking: {shipment.trackingNumber}
-            </p>
-            <StatusBadge status={shipment.status} />
-            <p>Last Location: {shipment.lastLocation}</p>
-            <p>
-              Estimated Delivery:{" "}
-              {new Date(shipment.estimatedDelivery).toDateString()}
-            </p>
-          </li>
-        ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {shipments.map((shipment) => (
+            <ShipmentCard key={shipment.id} shipment={shipment} />
+          ))}
+        </div>
       </ul>
     </div>
   );
