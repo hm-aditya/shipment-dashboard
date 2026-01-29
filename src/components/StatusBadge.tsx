@@ -1,5 +1,6 @@
 import type { ShipmentStatus } from "../types/shipment";
 
+// status style css properties for each status
 export const statusStyleMap: Record<
   ShipmentStatus,
   { badge: string; card: string ,border:string}

@@ -38,6 +38,7 @@ const ShipmentDashboard = () => {
       ? shipments
       : shipments.filter((s) => s.status === activeStatus);
 
+  //loading UI
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -45,7 +46,7 @@ const ShipmentDashboard = () => {
       </div>
     );
   }
-
+  // error UI
   if (error) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -54,6 +55,7 @@ const ShipmentDashboard = () => {
     );
   }
 
+//main UI
   return (
     <div>
       <h1 className="text-3xl font-semibold mb-6 pt-4 text-center tracking-tight">
@@ -61,6 +63,8 @@ const ShipmentDashboard = () => {
       </h1>
 
       <div className="flex flex-wrap justify-center gap-2 mb-6">
+
+        //status tabs 
         {STATUS_TABS.map((status) => {
           const isActive = activeStatus === status;
 
@@ -82,6 +86,7 @@ const ShipmentDashboard = () => {
       </div>
       <ul className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          //shipment cards
           {filteredShipments.map((shipment) => (
             <li key={shipment.id}>
               <ShipmentCard shipment={shipment} />

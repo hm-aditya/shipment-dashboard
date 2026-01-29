@@ -1,3 +1,4 @@
+//types for shipment status
 export type ShipmentStatus =
   | "Pending"
   | "In Transit"
@@ -5,6 +6,7 @@ export type ShipmentStatus =
   | "Delivered"
   | "Cancelled";
 
+// type for shipment object
 export interface Shipment {
   id: number;
   trackingNumber: string;

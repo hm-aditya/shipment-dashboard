@@ -4,6 +4,7 @@ import { shipments } from "../data/shipments";
 
 
 export const fetchShipments = (): Promise<Shipment[]> => {
+  // mimic a network request
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const shouldFail = false; // toggle to test error UI

@@ -2,14 +2,18 @@ import type { Shipment } from "../types/shipment";
 import StatusBadge, { statusStyleMap } from "./StatusBadge";
 import { useState } from "react";
 
+//prop types
 interface ShipmentCardProps {
   shipment: Shipment;
 }
 
+//component
 const ShipmentCard = ({ shipment }: ShipmentCardProps) => {
+  //state
   const [showDetails, setShowDetails] = useState(false);
 
   return (
+    //status style map for each status 
     <div
       className={`p-4 rounded-lg shadow-lg flex flex-col gap-2 ${statusStyleMap[shipment.status].card}`}
     >
@@ -28,7 +32,7 @@ const ShipmentCard = ({ shipment }: ShipmentCardProps) => {
         Estimated Delivery:{" "}
         {new Date(shipment.estimatedDelivery).toDateString()}
       </p>
-
+    
       <button
         onClick={() => setShowDetails((prev) => !prev)}
         className="mt-3 text-sm font-medium text-blue-600 hover:underline cursor-pointer"
